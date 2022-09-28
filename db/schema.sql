@@ -1,6 +1,14 @@
 DROP TABLE IF EXISTS candidates;
 DROP TABLE IF EXISTS parties;
 
+CREATE TABLE voters (
+  id INTEGER AUTO_INCREMENT PRIMARY KEY,
+  first_name VARCHAR(30) NOT NULL,
+  last_name VARCHAR(30) NOT NULL,
+  email VARCHAR(30) NOT NULL,
+  created_at DATETIME DEFAULT CURRENT_TIMESTAMP
+);
+
 CREATE TABLE parties (
   id INTEGER AUTO_INCREMENT PRIMARY KEY,
   party_name VARCHAR(50) NOT NULL,
@@ -15,3 +23,4 @@ CREATE TABLE candidates (
   industry_connected BOOLEAN NOT NULL,
   CONSTRAINT fk_party FOREIGN KEY (party_id) REFERENCES parties(id) ON DELETE SET NULL
 );
+
